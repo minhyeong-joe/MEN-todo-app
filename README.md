@@ -8,6 +8,8 @@ As the application will be very simple, frontend uses basic HTML, CSS, JS.
 
 This backend logic can be easily integrated into Angular or React application.
 
+[Frontend design sketch](https://www.sketch.com/s/b40bf7cd-eabe-4971-bc1d-bab6a4313583)
+
 ---
 
 ## Deploy
