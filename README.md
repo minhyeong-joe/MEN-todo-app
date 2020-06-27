@@ -34,7 +34,12 @@ git clone https://github.com/minhyeong-joe/MEN-todo-app.git
 ```
 npm install
 ```
-3. run node server
+3. Manually create config file `.env` with following template:
+```
+DB_URL=mongodb+srv://<username>:<password>@<host>/<db>?retryWrites=true&w=majority
+DB_NAME=<db>
+```
+4. run node server
 ```c
 node server.js
 
