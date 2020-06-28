@@ -7,17 +7,6 @@ const Todo = require('../models/todo');
 // http://localhost/api/todos/:userId
 router.get('/:userId', passport.authenticate('jwt', {session: false}), (req, res) => {
     const {userId} = req.params;
-
-    passport.deserializeUser(async (id, done) => {
-        try {
-            console.log(id);
-            
-          return done(null, id)
-        } catch (err) {
-          return done(err, null)
-        }
-      })
-
     
     Todo.getAllTodosByUserId(userId, (err, todos) => {
         if (err) {
