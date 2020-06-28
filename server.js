@@ -3,11 +3,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const passport = require('passport');
 require('dotenv').config();
-
-// API repos
-const users = require('./repos/users');
-const todos = require('./repos/todos');
 
 // connect to db
 mongoose.connect(process.env.DB_URL);
@@ -29,9 +26,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 // use body-parser json for api calls
 app.use(bodyParser.json());
 
+// use passport for auth token
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./passport')(passport);
+
 // set up REST API endpoints
-app.use('/api/users', users)
-app.use('/api/todos', todos);
+const repos = require('./repos');
+app.use('/api', repos)
 
 app.listen(PORT, () => {
     console.log("Server running on port " + PORT);

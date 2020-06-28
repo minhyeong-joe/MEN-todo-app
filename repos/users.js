@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+require('dotenv').config;
 
-// register
+// POST
+// http://localhost/api/users/register
 router.post('/register', (req, res) => {
     const newUser = new User({
         username: req.body.username,
@@ -14,6 +17,41 @@ router.post('/register', (req, res) => {
         } else {
             res.json({success:true, msg: 'Successfully registered the user', user: user});
         }
+    });
+});
+
+// POST
+// http://localhost/api/users/auth
+router.post('/auth', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    User.getUserByUsername(username, (err, user) => {
+        if (err) throw err;
+        if (!user) {
+            return res.json({success: false, msg: "User does not exist"});
+        }
+
+        User.comparePassword(password, user.password, (err, isMatch) => {
+            if (isMatch) {
+                // successfully authenticated user
+                const token = jwt.sign({data: user}, process.env.SECRET, {
+                    expiresIn: 86400  // 1 day
+                });
+
+                res.json({
+                    success: true,
+                    token: `JWT ${token}`,
+                    user: {
+                        userId: user._id,
+                        username: user.username
+                    }
+                });
+            } else {
+                // user exists but password didn't match
+                return res.json({success: false, msg: "Incorrect password!"});
+            }
+        });
     });
 });
 

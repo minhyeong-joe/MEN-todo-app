@@ -39,7 +39,7 @@ npm install
 3. Manually create config file `.env` with following template:
 ```
 DB_URL=mongodb+srv://<username>:<password>@<host>/<db>?retryWrites=true&w=majority
-DB_NAME=<db>
+SECRET=<secret_used_for_passport-jwt>
 ```
 4. run node server
 ```c
