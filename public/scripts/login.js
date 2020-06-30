@@ -4,10 +4,11 @@ $(function() {
     const LOGIN = 'login';
     const SIGNUP = 'signup';
 
-    let usernameInput = $('#username-input');
-    let passwordInput = $('#password-input');
-    let btn = $('button[type="submit"]');
-    let anchor = $('a.signup');
+    const usernameInput = $('#username-input');
+    const passwordInput = $('#password-input');
+    const btn = $('button[type="submit"]');
+    const anchor = $('a.signup');
+    const loader = $('.loader');
     let currentPage = LOGIN;  // login OR signup
 
     btn.on('click', (e) => {
@@ -16,6 +17,12 @@ $(function() {
         if (currentPage == LOGIN) {
             // login logic here
             console.log("Login:", usernameInput.val(), passwordInput.val());
+            btn.hide();
+            anchor.hide();
+            loader.show();
+            setTimeout(() => {
+                window.location.replace("/todos.html");
+            }, 2000);
         }
         // else if at signup page 
         else {

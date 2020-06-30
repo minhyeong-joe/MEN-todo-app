@@ -39,6 +39,12 @@
     a.signup {
         color: $secondary-button-color;
     }
+    .loader {
+        height: 70px;
+        width: 70px;
+        align-self: center;
+        display: none;
+    }
 }
 
 @media screen and (max-width: 480px) {
