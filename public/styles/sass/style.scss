@@ -1,0 +1,45 @@
+// common styles
+@import './variables';
+
+body {
+    background-color: $primary-color;
+    font-family: $primary-font;
+}
+
+a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    transition: font-weight 0.15s ease-in-out;
+}
+
+.input-with-icon {
+    position: relative;
+
+    i {
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: slategray;
+    }
+    input {
+        padding-left: 30px;
+    }
+}
+
+.btn {
+    border-radius: 0;
+    &:focus {
+        box-shadow: 0 0 0 0 transparent;
+        outline: none;
+    }
+}
+
+.btn-success {
+    background-color: $primary-button-color;
+}
+
+.btn-primary {
+    background-color: $secondary-button-color;
+}
