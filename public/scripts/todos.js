@@ -82,6 +82,7 @@ $(function () {
 
   // onClick: checkmark on each todo item
   $(document).on("click", checkbox, e => {
+    e.preventDefault();
     let todoId = $(e.target).data("check");
     let isChecked = $(e.target).is(":checked");
     
@@ -100,6 +101,7 @@ $(function () {
     .then(res => {
       let currentTodo = $(`.card[data-todo="${todoId}"]`);
       currentTodo.toggleClass("completed");
+      $(e.target).prop("checked", isChecked);
     })
     .catch(err => {
       console.error(err);
