@@ -7,7 +7,7 @@ const passport = require('passport');
 require('dotenv').config();
 
 // connect to db
-mongoose.connect(process.env.DB_URL);
+mongoose.connect(process.env.DB_URL, { userFindAndModify: false});
 mongoose.connection.on('connected', () => console.log("Connected to Database"));
 mongoose.connection.on('error', err => console.log("DB Connection Error: " + err));
 

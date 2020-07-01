@@ -35,3 +35,13 @@ module.exports.addTodo = (newTodo, callback) => {
 module.exports.deleteTodo = (todoId, callback) => {
     Todo.deleteOne({_id: todoId}, callback);
 }
+
+// get todo by todoId
+module.exports.getTodoByTodoId = (todoId, callback) => {
+    Todo.findOne({_id: todoId}).exec(callback);
+}
+
+// update a todo
+module.exports.updateTodo = (todoId, isDone, callback) => {
+    Todo.findByIdAndUpdate(todoId, {"isDone":isDone}, callback);
+}
