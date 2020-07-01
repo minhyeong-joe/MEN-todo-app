@@ -14,9 +14,9 @@ This backend logic can be easily integrated into Angular or React application.
 
 ## Deploy
 
-Heroku link: N/A
+Heroku link: [https://men-todo-app.herokuapp.com/](https://men-todo-app.herokuapp.com/)
 
-(Will be deployed on Heroku for full stack deployment exercise)
+(Deployed on Heroku as a full stack heroku deployment test/exercise)
 
 ---
 
