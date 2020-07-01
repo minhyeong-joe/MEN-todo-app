@@ -15,7 +15,7 @@ const app = express();
 
 app.use(cors());
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8080;
 
 // specify no icon (204: No Content)
 app.get('/favicon.ico', (req, res) => res.status(204));
